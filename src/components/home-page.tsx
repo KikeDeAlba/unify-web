@@ -45,7 +45,7 @@ export function HomePage() {
 								Powerful Features for Your Stream
 							</h2>
 							<p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-								Our Twitch bot offers a wide range of features to enhance your
+								Our Unify bot offers a wide range of features to enhance your
 								streaming experience and engage your audience.
 							</p>
 						</div>
@@ -102,7 +102,7 @@ export function HomePage() {
 								Explore Our Commands
 							</h2>
 							<p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-								Our Twitch bot offers a wide range of commands to enhance your
+								Our Unify bot offers a wide range of commands to enhance your
 								streaming experience and engage your audience.
 							</p>
 						</div>
@@ -190,8 +190,8 @@ export function HomePage() {
 							Get in Touch
 						</h2>
 						<p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-							Have a question or need help with our Twitch bot? Fill out the
-							form below and {"we'll"} get back to you as soon as possible.
+							Have a question or need help with our Unify bot? Fill out the form
+							below and {"we'll"} get back to you as soon as possible.
 						</p>
 					</div>
 					<form className="mx-auto w-full max-w-sm space-y-4">

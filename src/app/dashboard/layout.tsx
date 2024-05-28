@@ -11,7 +11,7 @@ export default function DashboardLayout({
 				<div className="flex h-[60px] items-center px-6">
 					<Link className="flex items-center gap-2 font-semibold" href="#">
 						<img
-							alt="TwitchBot Logo"
+							alt="UnifyBot Logo"
 							height={24}
 							src="/placeholder.svg"
 							style={{
@@ -20,7 +20,7 @@ export default function DashboardLayout({
 							}}
 							width={24}
 						/>
-						<span>TwitchBot</span>
+						<span>UnifyBot</span>
 					</Link>
 				</div>
 				<div className="flex-1">
@@ -52,7 +52,7 @@ export default function DashboardLayout({
 			<div className="flex flex-col">
 				<header className="flex h-14 lg:h-[60px] items-center gap-4 border-b bg-gray-100/40 px-6 dark:bg-gray-800/40">
 					<div className="flex-1">
-						<h1 className="font-semibold text-lg">TwitchBot Dashboard</h1>
+						<h1 className="font-semibold text-lg">UnifyBot Dashboard</h1>
 					</div>
 					<DropDownHeader />
 				</header>
