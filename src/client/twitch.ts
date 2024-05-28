@@ -9,11 +9,8 @@ export const getTwitchClient = () => new TwitchService();
 export const listenChat = (
     cb: (props: { tags: tmi.ChatUserstate; message: string }) => void,
 ) => {
-    const twitchClient = getTwitchClient();
-
     getTwitchUserInfo().then(user => {
-        console.log(user);
-
+        const twitchClient = getTwitchClient();
         twitchClient.listenChat(user.login, cb)
     })
 };

@@ -88,11 +88,7 @@ export class TwitchService {
 
     listenChat(username: string, cb: (props: { tags: tmi.ChatUserstate; message: string }) => void) {
         const tmiClient = new tmi.client({
-            identity: {
-                username: 'UnifyOfficialBot',
-                password: process.env.TWITCH_OAUTH_BOT ?? '',
-            },
-            channels: [username],
+            channels: [username]
         })
 
         tmiClient.connect()

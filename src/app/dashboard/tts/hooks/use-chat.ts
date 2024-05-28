@@ -1,3 +1,4 @@
+'use client'
 import { listenChat } from "@/client/twitch";
 import { useEffect, useState } from "react";
 
@@ -11,12 +12,14 @@ export const useChat = () => {
 
     useEffect(() => {
         listenChat(({ message, tags }) => {
-            console.log('message', message);
+            setChatMessages((prev) => {
+                if (prev[prev.length - 1]?.message === message && prev[prev.length - 1]?.author === tags["display-name"]) return prev
 
-            setChatMessages((prev) => [...prev, {
-                author: tags["display-name"] ?? '',
-                message
-            }])
+                return [...prev, {
+                    author: tags["display-name"] ?? '',
+                    message
+                }]
+            })
         })
     }, []);
 
