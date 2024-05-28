@@ -1,4 +1,5 @@
 import type { RChannelInfo, RUserInfo, RValidateToken } from "./twitch.types";
+import tmi from "tmi.js";
 
 export class TwitchService {
     getAuthUrl(redirectUri: string) {
@@ -83,5 +84,26 @@ export class TwitchService {
         const data = (await response.json()) as RUserInfo;
 
         return data.data[0]
+    }
+
+    listenChat(username: string, cb: (props: { tags: tmi.ChatUserstate; message: string }) => void) {
+        const tmiClient = new tmi.client({
+            identity: {
+                username: 'UnifyOfficialBot',
+                password: process.env.TWITCH_OAUTH_BOT ?? '',
+            },
+            channels: [username],
+        })
+
+        tmiClient.connect()
+
+        tmiClient.on('message', (channel, tags, message, self) => {
+            if (self) return
+
+            cb({
+                tags,
+                message
+            })
+        })
     }
 }
