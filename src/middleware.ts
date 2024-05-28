@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { getTwitchClient } from './actions/twitch'
+import { setCookies } from './actions/cookies'
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {

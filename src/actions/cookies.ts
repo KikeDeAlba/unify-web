@@ -17,3 +17,8 @@ export const setCookies = (props: PSetCookies, redirectUri?: string) => {
         redirect(redirectUri)
     }
 };
+
+export const getCookie = async (name: string) => {
+    const cookiesStore = cookies()
+    return cookiesStore.get(name)
+}

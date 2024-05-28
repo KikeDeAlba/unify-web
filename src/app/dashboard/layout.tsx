@@ -1,13 +1,4 @@
-import { DropDownHeader } from "@/components/dashboard-page";
-import { Button } from "@/components/ui/button";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from "@radix-ui/react-dropdown-menu";
+import { DropDownHeader } from "@/components/dropdown-header";
 import { BarChartIcon, FileTextIcon, SettingsIcon } from "lucide-react";
 import Link from "next/link";
 

@@ -3,16 +3,7 @@
  * @see https://v0.dev/t/KMnzsQtykur
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-	DropdownMenuTrigger,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuItem,
-	DropdownMenuContent,
-	DropdownMenu,
-} from "@/components/ui/dropdown-menu";
 import {
 	CardTitle,
 	CardDescription,
@@ -180,37 +171,6 @@ export function DashboardPage() {
 		</main>
 	);
 }
-
-export const DropDownHeader = () => (
-	<div className="flex items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
-				<Button className="rounded-full" size="icon" variant="ghost">
-					<img
-						alt="Avatar"
-						className="rounded-full"
-						height="32"
-						src="/placeholder.svg"
-						style={{
-							aspectRatio: "32/32",
-							objectFit: "cover",
-						}}
-						width="32"
-					/>
-					<span className="sr-only">Toggle user menu</span>
-				</Button>
-			</DropdownMenuTrigger>
-			<DropdownMenuContent align="end">
-				<DropdownMenuLabel>My Account</DropdownMenuLabel>
-				<DropdownMenuSeparator />
-				<DropdownMenuItem>Settings</DropdownMenuItem>
-				<DropdownMenuItem>Support</DropdownMenuItem>
-				<DropdownMenuSeparator />
-				<DropdownMenuItem>Logout</DropdownMenuItem>
-			</DropdownMenuContent>
-		</DropdownMenu>
-	</div>
-);
 
 function BarChartIcon(props: React.SVGProps<SVGSVGElement>) {
 	return (

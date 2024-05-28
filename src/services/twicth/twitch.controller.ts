@@ -1,4 +1,4 @@
-import type { RValidateToken } from "./twitch.types";
+import type { RChannelInfo, RUserInfo, RValidateToken } from "./twitch.types";
 
 export class TwitchService {
     getAuthUrl(redirectUri: string) {
@@ -31,5 +31,57 @@ export class TwitchService {
         const data = (await response.json()) as RValidateToken;
 
         return data
+    }
+
+    async getChannelInfo(userId: string, accesToken: string) {
+        const channelUrl = 'https://api.twitch.tv/helix/channels'
+
+        const url = new URL(channelUrl);
+        url.searchParams.set('broadcaster_id', userId);
+
+        const clientId = process.env.TWITCH_CLIENT_ID ?? '';
+
+        const headers = new Headers();
+        headers.append('Authorization', `Bearer ${accesToken}`);
+        headers.append('Client-ID', clientId);
+
+        const response = await fetch(url.toString(), {
+            method: 'GET',
+            headers,
+        });
+
+        if (!response.ok) {
+            throw new Error('Invalid token');
+        }
+
+        const data = (await response.json()) as RChannelInfo;
+
+        return data.data[0]
+    }
+
+    async getUserInfo(userId: string, accesToken: string) {
+        const userUrl = 'https://api.twitch.tv/helix/users'
+
+        const url = new URL(userUrl);
+        url.searchParams.set('id', userId);
+
+        const clientId = process.env.TWITCH_CLIENT_ID ?? '';
+
+        const headers = new Headers();
+        headers.append('Authorization', `Bearer ${accesToken}`);
+        headers.append('Client-ID', clientId);
+
+        const response = await fetch(url.toString(), {
+            method: 'GET',
+            headers,
+        });
+
+        if (!response.ok) {
+            throw new Error('Invalid token');
+        }
+
+        const data = (await response.json()) as RUserInfo;
+
+        return data.data[0]
     }
 }
