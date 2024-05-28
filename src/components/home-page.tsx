@@ -22,7 +22,7 @@ export function HomePage() {
 					<div className="flex flex-col items-center space-y-4 text-center">
 						<div className="space-y-2">
 							<h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-								Twitch Bot
+								UnifyBot
 							</h1>
 							<p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
 								A powerful and customizable Twitch bot to enhance your stream.
@@ -79,11 +79,14 @@ export function HomePage() {
 							</div>
 						</div>
 					</div>
-					<img
-						alt="Features"
+
+					<iframe
+						title="Twitch Player"
+						// TODO: Replace parent with the actual parent URL
+						src="https://player.twitch.tv/?channel=akozl&parent="
+						allowFullScreen
 						className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
 						height="310"
-						src="/placeholder.svg"
 						width="550"
 					/>
 				</div>

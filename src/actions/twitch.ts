@@ -2,7 +2,9 @@
 
 import { TwitchService } from "@/services/twicth/twitch.controller"
 import { AUTH_CALLBACKS } from "@/utils/data";
-import { getCookie } from "./cookies";
+import { deleteCookie, getCookie } from "./cookies";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 
 export const getTwitchClient = async () => new TwitchService()
@@ -53,4 +55,13 @@ export const getTwitchUserInfo = async () => {
     const userInfo = await twitchClient.getUserInfo(userId, token)
 
     return userInfo
+}
+
+export const signOutTwitch = async (redirectUri?: string) => {
+    await deleteCookie('twitch-auth')
+
+    if (redirectUri) {
+        revalidatePath(redirectUri)
+        redirect(redirectUri)
+    }
 }

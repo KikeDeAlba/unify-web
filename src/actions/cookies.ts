@@ -22,3 +22,8 @@ export const getCookie = async (name: string) => {
     const cookiesStore = cookies()
     return cookiesStore.get(name)
 }
+
+export const deleteCookie = async (name: string) => {
+    const cookiesStore = cookies()
+    return cookiesStore.delete(name)
+}

@@ -1,4 +1,4 @@
-import { getTwitchUserInfo } from "@/actions/twitch";
+import { getTwitchUserInfo, signOutTwitch } from "@/actions/twitch";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -8,6 +8,7 @@ import {
 	DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
+import { SignOutDropMenuItem } from "./sign-out-drop-menu-item";
 
 export const DropDownHeader = async () => {
 	const user = await getTwitchUserInfo();
@@ -37,7 +38,7 @@ export const DropDownHeader = async () => {
 					<DropdownMenuItem>Settings</DropdownMenuItem>
 					<DropdownMenuItem>Support</DropdownMenuItem>
 					<DropdownMenuSeparator />
-					<DropdownMenuItem>Logout</DropdownMenuItem>
+					<SignOutDropMenuItem />
 				</DropdownMenuContent>
 			</DropdownMenu>
 		</div>
