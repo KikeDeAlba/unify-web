@@ -83,7 +83,7 @@ export function HomePage() {
 					<iframe
 						title="Twitch Player"
 						// TODO: Replace parent with the actual parent URL
-						src="https://player.twitch.tv/?channel=akozl&parent=qgd666gb-3000.use.devtunnels.ms"
+						src="https://player.twitch.tv/?channel=akozl&parent=unify-bot.vercel.app"
 						allowFullScreen
 						className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
 						height="310"
