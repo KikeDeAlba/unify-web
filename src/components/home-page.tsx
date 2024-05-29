@@ -22,7 +22,7 @@ export function HomePage() {
 					<div className="flex flex-col items-center space-y-4 text-center">
 						<div className="space-y-2">
 							<h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-								Unify
+								UnifyBot
 							</h1>
 							<p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
 								A powerful and customizable Twitch bot to enhance your stream.
@@ -34,7 +34,7 @@ export function HomePage() {
 					</div>
 				</div>
 			</section>
-			<section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800 flex flex-col justify-center items-center">
+			<section className="w-full 2xl:px-40 py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800 flex flex-col justify-center items-center">
 				<div className="container grid items-center gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]">
 					<div className="flex flex-col justify-center space-y-4">
 						<div className="space-y-2">
@@ -91,7 +91,7 @@ export function HomePage() {
 					/>
 				</div>
 			</section>
-			<section className="w-full py-12 md:py-24 lg:py-32 flex flex-col justify-center items-center">
+			<section className="w-full 2xl:px-40 py-12 md:py-24 lg:py-32 flex flex-col justify-center items-center">
 				<div className="container space-y-8">
 					<div className="flex flex-col items-center space-y-4 text-center">
 						<div className="space-y-2">
