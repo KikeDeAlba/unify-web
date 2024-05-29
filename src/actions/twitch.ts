@@ -65,3 +65,16 @@ export const signOutTwitch = async (redirectUri?: string) => {
         redirect(redirectUri)
     }
 }
+
+export const sendMessage = async (message: string) => {
+    const twitchClient = await getTwitchClient();
+
+    const userInfo = await getTwitchUserInfo()
+
+    const authToken = process.env.TWITCH_OAUTH_BOT ?? ''
+
+    await twitchClient.sendMessage(userInfo.login, message, authToken)
+        .catch((err) => {
+            console.log(err)
+        })
+}

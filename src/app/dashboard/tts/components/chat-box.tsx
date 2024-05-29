@@ -3,6 +3,7 @@
 import { ChatBox } from "@/components/chat-box";
 import { useChat } from "../hooks/use-chat";
 import { useEffect } from "react";
+import { sendMessage } from "@/actions/twitch";
 
 export const ChatBoxTwitch = () => {
 	const { chat, lastMessage } = useChat();
@@ -13,5 +14,14 @@ export const ChatBoxTwitch = () => {
 		window.speechSynthesis.speak(utterThis);
 	}, [lastMessage]);
 
-	return <ChatBox messages={chat} />;
+	return (
+		<ChatBox
+			messages={chat}
+			onSubmit={(message) => {
+				sendMessage(message).catch((err) => {
+					console.log(err);
+				});
+			}}
+		/>
+	);
 };

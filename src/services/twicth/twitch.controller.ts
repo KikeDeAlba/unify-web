@@ -102,4 +102,20 @@ export class TwitchService {
             })
         })
     }
+
+    async sendMessage(username: string, message: string, oauth: string, bot = 'UnifyOfficialBot') {
+        const tmiClient = new tmi.client({
+            channels: [username],
+            identity: {
+                username: bot,
+                password: oauth
+            },
+        })
+
+        await tmiClient.connect()
+
+        const res = await tmiClient.say(username, message)
+
+        return res
+    }
 }

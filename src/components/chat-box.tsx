@@ -11,9 +11,10 @@ interface Props {
 		author: string;
 		message: string;
 	}>;
+	onSubmit?: (message: string) => void;
 }
 
-export function ChatBox({ messages }: Props) {
+export function ChatBox({ messages, onSubmit }: Props) {
 	return (
 		<section className="bg-white flex flex-col h-full dark:bg-gray-950 flex-1  shadow-lg w-full p-6">
 			<div className="space-y-4 flex-1 overflow-y-auto">
@@ -37,11 +38,25 @@ export function ChatBox({ messages }: Props) {
 				))}
 			</div>
 			<div className="mt-6 border-t border-gray-200 dark:border-gray-800 pt-4">
-				<div className="relative">
+				<form
+					onSubmit={(e) => {
+						e.preventDefault();
+
+						const data = new FormData(e.currentTarget);
+
+						const message = data.get("message") as string;
+
+						onSubmit?.(message);
+
+						e.currentTarget.reset();
+					}}
+					className="relative"
+				>
 					<input
 						className="w-full outline-none transition-all bg-gray-100 dark:bg-gray-800 border focus:ring-0 rounded-lg px-4 py-2 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 dark:border-gray-800 border-gray-200 dark:hover:border-gray-500 hover:border-gray-300 dark:focus:border-gray-500 focus:border-gray-300"
 						placeholder="Type your message..."
 						type="text"
+						name="message"
 					/>
 					<button
 						type="submit"
@@ -63,7 +78,7 @@ export function ChatBox({ messages }: Props) {
 							/>
 						</svg>
 					</button>
-				</div>
+				</form>
 			</div>
 		</section>
 	);
