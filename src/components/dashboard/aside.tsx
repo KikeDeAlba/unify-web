@@ -2,6 +2,7 @@ import { BotIcon } from "lucide-react";
 import Link from "next/link";
 import { SubRoute } from "./components/sub-route";
 import { Route } from "./components/route";
+import { ReadRoute } from "./utils/read-route";
 
 export type PAside = {
 	routes: Array<{
@@ -26,22 +27,9 @@ export const Aside = ({ routes }: PAside) => {
 			</div>
 			<div className="flex-1">
 				<nav className="grid items-start px-4 text-sm font-medium">
-					{routes.map((route) => {
-						if (route.subRoutes) {
-							return <SubRoute key={`routes-${route.name}`} route={route} />;
-						}
-
-						if (route.href == null) return;
-
-						return (
-							<Route
-								key={`routes-${route.name}`}
-								icon={route.icon}
-								name={route.name}
-								href={route.href}
-							/>
-						);
-					})}
+					{routes.map((route) => (
+						<ReadRoute key={`read-route-${route.name}`} route={route} />
+					))}
 				</nav>
 			</div>
 		</aside>

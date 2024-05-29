@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import type { PAside } from "../aside";
-import { Route, RouteButton } from "./route";
+import { RouteButton } from "./route";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconCaretLeftFilled } from "@tabler/icons-react";
+import { ReadRoute } from "../utils/read-route";
 
 export const SubRoute = ({ route }: { route: PAside["routes"][0] }) => {
 	const [open, setOpen] = useState(false);
@@ -30,23 +31,9 @@ export const SubRoute = ({ route }: { route: PAside["routes"][0] }) => {
 						animate={{ height: "auto", opacity: 1 }}
 						exit={{ height: 0, opacity: 0 }}
 					>
-						{route.subRoutes?.map((subRoute) => {
-							if (subRoute.subRoutes)
-								return (
-									<SubRoute key={`routes-${subRoute.name}`} route={subRoute} />
-								);
-
-							if (subRoute.href == null) return;
-							return (
-								<div key={`routes-${subRoute.name}`}>
-									<Route
-										icon={subRoute.icon}
-										href={subRoute.href}
-										name={subRoute.name}
-									/>
-								</div>
-							);
-						})}
+						{route.subRoutes?.map((subRoute) => (
+							<ReadRoute key={`read-route-${subRoute.name}`} route={subRoute} />
+						))}
 					</motion.div>
 				)}
 			</AnimatePresence>
