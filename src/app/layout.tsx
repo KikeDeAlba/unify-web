@@ -1,18 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Rubik, Chivo } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-export const rubik = Rubik({
-	subsets: ["latin"],
-	display: "swap",
-	variable: "--font-rubik",
-});
-export const chivo = Chivo({
-	subsets: ["latin"],
-	display: "swap",
-	variable: "--font-chivo",
-});
-export const inter = Inter({
+const inter = Inter({
 	subsets: ["latin"],
 	display: "swap",
 	variable: "--font-inter",
