@@ -23,5 +23,8 @@ export const useChat = () => {
         })
     }, []);
 
-    return chatMessages
+    return {
+        chat: chatMessages,
+        lastMessage: chatMessages[chatMessages.length - 1]
+    }
 }

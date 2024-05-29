@@ -1,21 +1,28 @@
 "use client";
 
+import { ChatBox } from "@/components/chat-box";
 import { useChat } from "../hooks/use-chat";
+import { useEffect } from "react";
 
-export const ChatBox = () => {
-	const chat = useChat();
+export const ChatBoxTwitch = () => {
+	const { chat, lastMessage } = useChat();
 
-	console.log(chat);
+	useEffect(() => {
+		if (!lastMessage) return;
 
-	return (
-		<section>
-			{chat.map((message) => (
-				<div key={message.author}>
-					<p>
-						{message.author}: {message.message}
-					</p>
-				</div>
-			))}
-		</section>
-	);
+		const voices = window.speechSynthesis.getVoices();
+
+		const voice = voices.find((voice) => voice.lang === "es-MX");
+
+		if (!voice) return;
+
+		const utterThis = new window.SpeechSynthesisUtterance(lastMessage.message);
+
+		utterThis.voice = voice;
+		utterThis.lang = "es-MX";
+
+		window.speechSynthesis.speak(utterThis);
+	}, [lastMessage]);
+
+	return <ChatBox messages={chat} />;
 };

@@ -1,11 +1,9 @@
-import { ChatBox } from "./components/chat-box";
+import { ChatBoxTwitch } from "./components/chat-box";
 
 export default async function TTSPage() {
 	return (
-		<main>
-			<h1>TTS</h1>
-
-			<ChatBox />
+		<main className="flex-1">
+			<ChatBoxTwitch />
 		</main>
 	);
 }
