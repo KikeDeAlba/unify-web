@@ -9,18 +9,7 @@ export const ChatBoxTwitch = () => {
 
 	useEffect(() => {
 		if (!lastMessage) return;
-
-		const voices = window.speechSynthesis.getVoices();
-
-		const voice = voices.find((voice) => voice.lang === "es-MX");
-
-		if (!voice) return;
-
 		const utterThis = new window.SpeechSynthesisUtterance(lastMessage.message);
-
-		utterThis.voice = voice;
-		utterThis.lang = "es-MX";
-
 		window.speechSynthesis.speak(utterThis);
 	}, [lastMessage]);
 
