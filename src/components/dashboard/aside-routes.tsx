@@ -2,42 +2,42 @@ import type { PAside } from "./aside";
 import { BarChartIcon, BotIcon, SettingsIcon } from "lucide-react";
 
 export const AsideRoutes: PAside["routes"] = [
-	{ name: "Analytics", href: "#", Icon: () => <BarChartIcon /> },
+	{ name: "Analytics", href: "#", icon: <BarChartIcon /> },
 	{
 		name: "Alerts",
-		Icon: () => <SettingsIcon />,
+		icon: <SettingsIcon />,
 		subRoutes: [
 			{
 				name: "Stream events",
-				Icon: () => <SettingsIcon />,
+				icon: <SettingsIcon />,
 				href: "/dashboard/alerts/stream",
 			},
 			{
 				name: "Channel Points",
-				Icon: () => <SettingsIcon />,
+				icon: <SettingsIcon />,
 				href: "/dashboard/alerts/channel-points",
 			},
 		],
 	},
 	{
 		name: "Bot",
-		Icon: () => <BotIcon />,
+		icon: <BotIcon />,
 		subRoutes: [
 			{
 				name: "Settings",
-				Icon: () => <SettingsIcon />,
+				icon: <SettingsIcon />,
 				href: "/dashboard/bot/settings",
 			},
 			{
 				name: "Commands",
-				Icon: () => <SettingsIcon />,
+				icon: <SettingsIcon />,
 				href: "/dashboard/bot/commands",
 			},
 		],
 	},
 	{
 		name: "Text to Speech",
-		Icon: () => <SettingsIcon />,
+		icon: <SettingsIcon />,
 		href: "/dashboard/tts",
 	},
 ];
