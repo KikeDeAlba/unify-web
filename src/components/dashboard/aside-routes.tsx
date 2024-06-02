@@ -20,20 +20,9 @@ export const AsideRoutes: PAside["routes"] = [
 		],
 	},
 	{
-		name: "Bot",
+		name: "Commands",
 		icon: <BotIcon />,
-		subRoutes: [
-			{
-				name: "Settings",
-				icon: <SettingsIcon />,
-				href: "/dashboard/bot/settings",
-			},
-			{
-				name: "Commands",
-				icon: <SettingsIcon />,
-				href: "/dashboard/bot/commands",
-			},
-		],
+		href: "/dashboard/commands",
 	},
 	{
 		name: "Text to Speech",

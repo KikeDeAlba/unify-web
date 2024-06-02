@@ -17,7 +17,7 @@ export const DropDownHeader = async () => {
 		<div className="flex items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
-					<Button className="rounded-full" size="icon">
+					<Button className="rounded-full" size="icon" variant={"ghost"}>
 						<img
 							alt="Avatar"
 							className="rounded-full"

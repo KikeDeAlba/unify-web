@@ -2,12 +2,12 @@ import type { RChannelInfo, RUserInfo, RValidateToken } from "./twitch.types";
 import tmi from "tmi.js";
 
 export class TwitchService {
-    getAuthUrl(redirectUri: string) {
+    getAuthUrl(redirectUri: string, clientId: string) {
         const scopes = ["channel:read:subscriptions"];
 
         const authUrl = "https://id.twitch.tv/oauth2/authorize";
         const url = new URL(authUrl);
-        url.searchParams.set("client_id", process.env.TWITCH_CLIENT_ID ?? "");
+        url.searchParams.set("client_id", clientId);
         url.searchParams.set("redirect_uri", redirectUri);
         url.searchParams.set("response_type", "token");
         url.searchParams.set("scope", scopes.join(" "));
@@ -60,13 +60,11 @@ export class TwitchService {
         return data.data[0]
     }
 
-    async getUserInfo(userId: string, accesToken: string) {
+    async getUserInfo(userId: string, accesToken: string, clientId: string) {
         const userUrl = 'https://api.twitch.tv/helix/users'
 
         const url = new URL(userUrl);
         url.searchParams.set('id', userId);
-
-        const clientId = process.env.TWITCH_CLIENT_ID ?? '';
 
         const headers = new Headers();
         headers.append('Authorization', `Bearer ${accesToken}`);

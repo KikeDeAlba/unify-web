@@ -1,7 +1,5 @@
 import { BotIcon } from "lucide-react";
 import Link from "next/link";
-import { SubRoute } from "./components/sub-route";
-import { Route } from "./components/route";
 import { ReadRoute } from "./utils/read-route";
 
 export type PAside = {

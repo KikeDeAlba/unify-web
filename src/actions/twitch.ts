@@ -1,4 +1,4 @@
-'use server'
+"use server"
 
 import { TwitchService } from "@/services/twicth/twitch.controller"
 import { AUTH_CALLBACKS } from "@/utils/data";
@@ -6,13 +6,14 @@ import { deleteCookie, getCookie } from "./cookies";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+const TWITCH_CLIENT_ID = process.env.TWICTH_CLIENT_ID ?? '';
 
 export const getTwitchClient = async () => new TwitchService()
 
 export const getTwitchAuthUrl = async () => {
     const twitchClient = await getTwitchClient();
 
-    return twitchClient.getAuthUrl(AUTH_CALLBACKS.twitch)
+    return twitchClient.getAuthUrl(AUTH_CALLBACKS.twitch, TWITCH_CLIENT_ID)
 }
 
 export const getTwitchAccessToken = async () => {
@@ -52,7 +53,7 @@ export const getTwitchUserInfo = async () => {
     const userId = await getTwitchUserId()
     const token = await getTwitchAccessToken()
 
-    const userInfo = await twitchClient.getUserInfo(userId, token)
+    const userInfo = await twitchClient.getUserInfo(userId, token, TWITCH_CLIENT_ID)
 
     return userInfo
 }
