@@ -1,6 +1,7 @@
 "use client";
 
 import { setCookies } from "@/actions/cookies";
+import { ValidatingTwitchLoader } from "@/components/validating-twitch-loader";
 import { useEffect } from "react";
 
 export default function TwitchAuth() {
@@ -18,5 +19,5 @@ export default function TwitchAuth() {
 		}
 	}, []);
 
-	return <div>Hello from twitch auth</div>;
+	return <ValidatingTwitchLoader />;
 }

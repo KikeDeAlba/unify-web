@@ -248,7 +248,7 @@ function SettingsIcon(props: React.SVGProps<SVGSVGElement>) {
 	);
 }
 
-function TwitchIcon(props: React.SVGProps<SVGSVGElement>) {
+export function TwitchIcon(props: React.SVGProps<SVGSVGElement>) {
 	return (
 		// biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
 		<svg
