@@ -8,21 +8,29 @@ const API = 'https://vps.focograficomx.com/unify'
 export const joinChannel = async () => {
     const twitchAuth = await getTwitchAccessToken()
 
-    await fetch(`${API}/channels/join`, {
+    const res = await fetch(`${API}/channels/join`, {
         headers: {
             Cookie: `twitch-auth=${twitchAuth}`
         }
     })
+
+    if (!res.ok) {
+        throw new Error(res.statusText)
+    }
 }
 
 export const leaveChannel = async () => {
     const twitchAuth = await getTwitchAccessToken()
 
-    await fetch(`${API}/channels/part`, {
+    const res = await fetch(`${API}/channels/part`, {
         headers: {
             Cookie: `twitch-auth=${twitchAuth}`
         }
     })
+
+    if (!res.ok) {
+        throw new Error(res.statusText)
+    }
 }
 
 export const isListening = async () => {
@@ -30,11 +38,15 @@ export const isListening = async () => {
 
     const userInfo = await getTwitchUserInfo()
 
-    await fetch(`${API}/channels/listening/${userInfo.login}`, {
+    const res = await fetch(`${API}/channels/listening/${userInfo.login}`, {
         headers: {
             Cookie: `twitch-auth=${twitchAuth}`
         }
     })
+
+    if (!res.ok) {
+        throw new Error(res.statusText)
+    }
 }
 
 export const addCommandFromForm = async (formData: FormData) => {
@@ -62,21 +74,40 @@ export const addCommand = async (command: string, description: string, code: str
         }
     })
 
-
-    console.log(res)
-
-    const json = await res.json()
-
-    console.log(json)
+    if (!res.ok) {
+        throw new Error(res.statusText)
+    }
 }
 
 export const removeCommand = async (command: string) => {
     const twitchAuth = await getTwitchAccessToken()
 
-    await fetch(`${API}/channels/command/${command}`, {
+    const res = await fetch(`${API}/channels/command/${command}`, {
         method: 'DELETE',
         headers: {
             Cookie: `twitch-auth=${twitchAuth}`
         }
     })
+
+    if (!res.ok) {
+        throw new Error(res.statusText)
+    }
+}
+
+export const getCommands = async () => {
+    const twitchAuth = await getTwitchAccessToken()
+
+    const res = await fetch(`${API}/channels/commands`, {
+        headers: {
+            Cookie: `twitch-auth=${twitchAuth}`
+        }
+    })
+
+    if (!res.ok) {
+        throw new Error(res.statusText)
+    }
+
+    const json = await res.json()
+
+    return json
 }
