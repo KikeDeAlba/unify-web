@@ -6,19 +6,6 @@
 
 import { TwitchIcon } from "./dashboard-page";
 
-/** Add fonts into your Next.js project:
-
-import { Inter } from 'next/font/google'
-
-inter({
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-To read more about using these font, please visit the Next.js documentation:
-- App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
-- Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
-**/
 export function ValidatingTwitchLoader() {
 	return (
 		<div className="flex h-screen w-full items-center justify-center bg-gray-100 dark:bg-gray-950">
