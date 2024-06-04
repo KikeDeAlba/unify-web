@@ -6,11 +6,11 @@ import { deleteCookie, getCookie } from "./cookies";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-const TWITCH_CLIENT_ID = process.env.TWICTH_CLIENT_ID ?? '';
 
 export const getTwitchClient = async () => new TwitchService()
 
 export const getTwitchAuthUrl = async () => {
+    const TWITCH_CLIENT_ID = process.env.TWICTH_CLIENT_ID ?? '';
     const twitchClient = await getTwitchClient();
 
     return twitchClient.getAuthUrl(AUTH_CALLBACKS.twitch, TWITCH_CLIENT_ID)
@@ -48,6 +48,8 @@ export const getTwitchChannelInfo = async () => {
 }
 
 export const getTwitchUserInfo = async () => {
+    const TWITCH_CLIENT_ID = process.env.TWICTH_CLIENT_ID ?? '';
+
     const twitchClient = await getTwitchClient();
 
     const userId = await getTwitchUserId()
