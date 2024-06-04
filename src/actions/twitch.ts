@@ -6,11 +6,10 @@ import { deleteCookie, getCookie } from "./cookies";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-
 export const getTwitchClient = async () => new TwitchService()
 
 export const getTwitchAuthUrl = async () => {
-    const TWITCH_CLIENT_ID = process.env.TWICTH_CLIENT_ID ?? '';
+    const TWITCH_CLIENT_ID = process.env.NEXT_PUBLIC_TWICTH_CLIENT_ID ?? '';
     const twitchClient = await getTwitchClient();
 
     return twitchClient.getAuthUrl(AUTH_CALLBACKS.twitch, TWITCH_CLIENT_ID)
@@ -48,7 +47,7 @@ export const getTwitchChannelInfo = async () => {
 }
 
 export const getTwitchUserInfo = async () => {
-    const TWITCH_CLIENT_ID = process.env.TWICTH_CLIENT_ID ?? '';
+    const TWITCH_CLIENT_ID = process.env.NEXT_PUBLIC_TWICTH_CLIENT_ID ?? '';
 
     const twitchClient = await getTwitchClient();
 
@@ -74,7 +73,7 @@ export const sendMessage = async (message: string) => {
 
     const userInfo = await getTwitchUserInfo()
 
-    const authToken = process.env.TWITCH_OAUTH_BOT ?? ''
+    const authToken = process.env.NEXT_PUBLIC_TWITCH_OAUTH_BOT ?? ''
 
     await twitchClient.sendMessage(userInfo.login, message, authToken)
         .catch((err) => {
