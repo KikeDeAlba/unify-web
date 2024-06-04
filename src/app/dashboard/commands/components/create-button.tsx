@@ -1,6 +1,6 @@
 "use client";
 
-import { addCommandFromForm } from "@/actions/bot";
+import { addCommandFromForm, joinChannel } from "@/actions/bot";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
@@ -11,6 +11,16 @@ export const CreateButton = () => {
 		<>
 			<button type="button" onClick={() => setIsPopupOpen(true)}>
 				Crear
+			</button>
+
+			<button
+				type="button"
+				className="mt-4 px-4 bg-purple-500 text-white hover:bg-purple-600 rounded-md transition-colors"
+				onClick={() => {
+					joinChannel();
+				}}
+			>
+				join channel
 			</button>
 
 			<AnimatePresence>
