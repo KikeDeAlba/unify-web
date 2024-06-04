@@ -34,19 +34,15 @@ export const leaveChannel = async () => {
 }
 
 export const isListening = async () => {
-    const twitchAuth = await getTwitchAccessToken()
-
     const userInfo = await getTwitchUserInfo()
 
-    const res = await fetch(`${API}/channels/listening/${userInfo.login}`, {
-        headers: {
-            Cookie: `twitch-auth=${twitchAuth}`
-        }
-    })
+    const res = await fetch(`${API}/channels/listening/${userInfo.login}`)
 
     if (!res.ok) {
         throw new Error(res.statusText)
     }
+
+    return res.json()
 }
 
 export const addCommandFromForm = async (formData: FormData) => {
